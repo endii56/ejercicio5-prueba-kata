@@ -116,4 +116,16 @@ class MochilaTest extends TestCase
         $this->assertEquals("La cantidad del objeto debe ser un numero entero", $respuesta);
     }
 
+    /**
+     * @test
+     */
+    public function testIntroducirElComandoGuardarEnMayusculasDebeTratarseIgulQueEnMinusculas():void
+    {
+        $mochila = new Mochila();
+
+        $respuesta = $mochila->ejecutar("GuarDAR cantimplora 4");
+
+        $this->assertEquals("cantimplora x4", $respuesta);
+    }
+
 }
