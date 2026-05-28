@@ -154,4 +154,17 @@ class MochilaTest extends TestCase
 
     }
 
+    /**
+     * @test
+     */
+    public function testDespuesDeErrorSePuedeAlmacenar():void
+    {
+        $mochila = new Mochila();
+
+        $mochila->ejecutar("guardar cantimplora error");
+        $respuesta = $mochila->ejecutar("guardar guantes 3");
+
+        $this->assertEquals("guantes x3", $respuesta);
+    }
+
 }
