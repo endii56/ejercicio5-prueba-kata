@@ -24,6 +24,9 @@ class Mochila
         if($accion == self::ACCION_GUARDAR){
             return $this->guardar($objeto, $cantidad);
         }
+        if(!array_key_exists($accion, $this->mochila)){
+            return "El objeto seleccionado no existe";
+        }
         if($accion === self::ACCION_USAR){
             $this->usar($objeto);
         }
