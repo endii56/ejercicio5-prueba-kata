@@ -27,6 +27,9 @@ class Mochila
         if($accion === self::ACCION_USAR){
             $this->usar($objeto);
         }
+        if($this->mochila[$objeto] === 0){
+            unset($this->mochila[$objeto]);
+        }
         return $this->contenidoMochila();
     }
 
