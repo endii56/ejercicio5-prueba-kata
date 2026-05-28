@@ -35,13 +35,13 @@ class Mochila
         return $this->contenidoMochila();
     }
 
-    public function obtenerParametros(string $accion):array{
+    private function obtenerParametros(string $accion):array{
         $parametros = explode(" ", $accion);
         $cantidad = !isset($parametros[2]) ? "1" : $parametros[2];
         return [strtolower($parametros[0]),strtolower($parametros[1]),$cantidad];
     }
 
-    public function contenidoMochila():string{
+    private function contenidoMochila():string{
         $contenidoMochila = [];
         ksort($this->mochila);
         foreach($this->mochila as $objeto => $cantidad){
@@ -50,7 +50,7 @@ class Mochila
         return implode(", ", $contenidoMochila);
     }
 
-    public function guardar(string $objeto, string $cantidad):string{
+    private function guardar(string $objeto, string $cantidad):string{
         $cantidadEntera = filter_var($cantidad, FILTER_VALIDATE_INT);
         if($cantidadEntera === false){
             return self::MENSAJE_ERROR_NUMERO_NO_ENTERO;
@@ -66,7 +66,7 @@ class Mochila
         return $this->contenidoMochila();
     }
 
-    public function usar(string $objeto):string{
+    private function usar(string $objeto):string{
         if(!array_key_exists($objeto, $this->mochila)){
             return self::MENSAJE_ERROR_OBJETO_NO_EXISTE;
         }
@@ -77,7 +77,7 @@ class Mochila
         return $this->contenidoMochila();
     }
 
-    public function vaciar():void
+    private function vaciar():void
     {
         $this->mochila = [];
     }
