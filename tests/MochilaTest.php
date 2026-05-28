@@ -256,4 +256,18 @@ class MochilaTest extends TestCase
 
         $this->assertEquals("manzana x4", $respuesta);
     }
+
+    /**
+     * @test
+     */
+    public function testLaSalidaDebeEstarOrdenadaAlfabticamente():void
+    {
+        $mochila = new Mochila();
+
+        $mochila->ejecutar("guardar cantimplora 6");
+        $respuesta = $mochila->ejecutar("guardar azulejos 8");
+
+        $this->assertEquals("azulejos x8, cantimplora x6", $respuesta);
+
+    }
 }
