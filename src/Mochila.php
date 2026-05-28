@@ -8,6 +8,9 @@ class Mochila
     private array $mochila;
 
     private const string ACCION_GUARDAR = "guardar";
+
+    private const string MENSAJE_ERROR_NUMERO_GUARDAR = "La cantidad debe ser un numero positivo";
+
     public function __construct()
     {
         $this->mochila = [];
@@ -15,11 +18,8 @@ class Mochila
 
     public function ejecutar(string $accion):string{
         [$accion, $objeto, $cantidad] = $this->obtenerParametros($accion);
-        if((int)$cantidad < 0){
-            return "La cantidad debe ser un numero positivo";
-        }
         if($accion == self::ACCION_GUARDAR){
-            $this->guardar($objeto, $cantidad);
+            return $this->guardar($objeto, $cantidad);
         }
         return $this->contenidoMochila();
     }
@@ -38,7 +38,11 @@ class Mochila
         return implode(", ", $contenidoMochila);
     }
 
-    public function guardar(string $objeto, string $cantidad):void{
+    public function guardar(string $objeto, string $cantidad):string{
+        if((int)$cantidad < 0){
+            return self::MENSAJE_ERROR_NUMERO_GUARDAR;
+        }
         $this->mochila[$objeto] = $cantidad;
+        return $this->contenidoMochila();
     }
 }
