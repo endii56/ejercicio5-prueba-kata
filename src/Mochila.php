@@ -10,6 +10,8 @@ class Mochila
     private const string ACCION_GUARDAR = "guardar";
 
     private const string MENSAJE_ERROR_NUMERO_GUARDAR = "La cantidad debe ser un numero positivo";
+    private const string MENSAJE_ERROR_NUMERO_NO_ENTERO = "La cantidad del objeto debe ser un numero entero";
+
 
     public function __construct()
     {
@@ -18,9 +20,6 @@ class Mochila
 
     public function ejecutar(string $accion):string{
         [$accion, $objeto, $cantidad] = $this->obtenerParametros($accion);
-        if(!filter_var($cantidad, FILTER_VALIDATE_INT)){
-            return "La cantidad del objeto debe ser un numero entero";
-        }
         if($accion == self::ACCION_GUARDAR){
             return $this->guardar($objeto, $cantidad);
         }
@@ -42,6 +41,9 @@ class Mochila
     }
 
     public function guardar(string $objeto, string $cantidad):string{
+        if(!filter_var($cantidad, FILTER_VALIDATE_INT)){
+            return self::MENSAJE_ERROR_NUMERO_NO_ENTERO;
+        }
         if((int)$cantidad <= 0){
             return self::MENSAJE_ERROR_NUMERO_GUARDAR;
         }
