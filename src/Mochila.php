@@ -9,6 +9,7 @@ class Mochila
 
     private const string ACCION_GUARDAR = "guardar";
     private const string ACCION_USAR = "usar";
+    private const string ACCION_VACIAR = "vaciar";
 
     private const string MENSAJE_ERROR_NUMERO_GUARDAR = "La cantidad debe ser un numero positivo";
     private const string MENSAJE_ERROR_NUMERO_NO_ENTERO = "La cantidad del objeto debe ser un numero entero";
@@ -28,8 +29,8 @@ class Mochila
         if($accion === self::ACCION_USAR){
             return $this->usar($objeto);
         }
-        if($accion === "vaciar"){
-            $this->mochila = [];
+        if($accion === self::ACCION_VACIAR){
+            $this->vaciar();
         }
         return $this->contenidoMochila();
     }
@@ -73,5 +74,10 @@ class Mochila
             unset($this->mochila[$objeto]);
         }
         return $this->contenidoMochila();
+    }
+
+    public function vaciar():void
+    {
+        $this->mochila = [];
     }
 }
