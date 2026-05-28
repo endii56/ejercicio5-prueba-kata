@@ -18,7 +18,11 @@ class Mochila
         if($accion == self::ACCION_GUARDAR){
             $this->guardar($objeto, $cantidad);
         }
-        return implode(" ", $this->mochila);
+        $contenidoMochila = [];
+        foreach($this->mochila as $objeto => $cantidad){
+            $contenidoMochila[] = "$objeto x$cantidad";
+        }
+        return implode(", ", $contenidoMochila);
     }
 
     public function obtenerParametros(string $accion):array{
