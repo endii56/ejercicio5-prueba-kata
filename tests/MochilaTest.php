@@ -9,18 +9,6 @@ class MochilaTest extends TestCase
     /**
      * @test
      */
-    public function testHolaMundo():void
-    {
-        $mochila = new Mochila();
-
-        $respuesta = $mochila->holaMundo();
-
-        $this->assertEquals("Hola mundo!", $respuesta);
-    }
-
-    /**
-     * @test
-     */
     public function testInicializarMochilaVacia():void
     {
         $mochila = new Mochila();

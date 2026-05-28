@@ -12,11 +12,6 @@ class Mochila
         $this->mochila = [];
     }
 
-    public function holaMundo():string
-    {
-        return "Hola mundo!";
-    }
-
     public function ejecutar():string{
         if(empty($this->mochila)){
             return "";
