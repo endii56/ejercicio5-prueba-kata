@@ -12,6 +12,7 @@ class Mochila
 
     private const string MENSAJE_ERROR_NUMERO_GUARDAR = "La cantidad debe ser un numero positivo";
     private const string MENSAJE_ERROR_NUMERO_NO_ENTERO = "La cantidad del objeto debe ser un numero entero";
+    private const string MENSAJE_ERROR_OBJETO_NO_EXISTE = "El objeto seleccionado no existe";
 
 
     public function __construct()
@@ -24,11 +25,8 @@ class Mochila
         if($accion == self::ACCION_GUARDAR){
             return $this->guardar($objeto, $cantidad);
         }
-        if(!array_key_exists($accion, $this->mochila)){
-            return "El objeto seleccionado no existe";
-        }
         if($accion === self::ACCION_USAR){
-            $this->usar($objeto);
+            return $this->usar($objeto);
         }
         return $this->contenidoMochila();
     }
@@ -63,10 +61,14 @@ class Mochila
         return $this->contenidoMochila();
     }
 
-    public function usar(string $objeto):void{
+    public function usar(string $objeto):string{
+        if(!array_key_exists($objeto, $this->mochila)){
+            return self::MENSAJE_ERROR_OBJETO_NO_EXISTE;
+        }
         $this->mochila[$objeto] -= 1;
         if($this->mochila[$objeto] === 0){
             unset($this->mochila[$objeto]);
         }
+        return $this->contenidoMochila();
     }
 }
