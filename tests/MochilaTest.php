@@ -91,4 +91,16 @@ class MochilaTest extends TestCase
 
         $this->assertEquals("La cantidad debe ser un numero positivo", $respuesta);
     }
+
+    /**
+     * @test
+     */
+    public function testGuardarUnObjetoConCantidadQueNoEsUnEntero():void
+    {
+        $mochila = new Mochila();
+
+        $respuesta = $mochila->ejecutar("guardar cantimplora 3.1");
+
+        $this->assertEquals("La cantidad del objeto debe ser un numero entero", $respuesta);
+    }
 }
