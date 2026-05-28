@@ -243,4 +243,17 @@ class MochilaTest extends TestCase
 
         $this->assertEquals("", $respuesta);
     }
+
+    /**
+     * @test
+     */
+    public function testTrasVaciarSePuedeGuardarUnObjeto():void{
+        $mochila = new Mochila();
+
+        $mochila->ejecutar("guardar cantimplora");
+        $mochila->ejecutar("vaciar");
+        $respuesta = $mochila->ejecutar("guardar manzana 4");
+
+        $this->assertEquals("manzana x4", $respuesta);
+    }
 }
