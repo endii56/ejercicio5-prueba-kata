@@ -43,6 +43,7 @@ class Mochila
 
     public function contenidoMochila():string{
         $contenidoMochila = [];
+        ksort($this->mochila);
         foreach($this->mochila as $objeto => $cantidad){
             $contenidoMochila[] = "$objeto x$cantidad";
         }
