@@ -21,12 +21,7 @@ class Mochila
     public function ejecutar(string $accion):string{
         [$accion, $objeto, $cantidad] = $this->obtenerParametros($accion);
         if($accion == self::ACCION_GUARDAR){
-            if(array_key_exists($objeto, $this->mochila)){
-                $this->mochila[$objeto] += $cantidad;
-            }
-            else {
-                return $this->guardar($objeto, $cantidad);
-            }
+            return $this->guardar($objeto, $cantidad);
         }
         return $this->contenidoMochila();
     }
@@ -53,7 +48,11 @@ class Mochila
         if($cantidad <= 0){
             return self::MENSAJE_ERROR_NUMERO_GUARDAR;
         }
-        $this->mochila[$objeto] = $cantidad;
+        if(array_key_exists($objeto, $this->mochila)){
+            $this->mochila[$objeto] += (int)$cantidad;
+            return $this->contenidoMochila();
+        }
+        $this->mochila[$objeto] = (int)$cantidad;
         return $this->contenidoMochila();
     }
 }
