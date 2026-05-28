@@ -15,9 +15,6 @@ class Mochila
 
     public function ejecutar(string $accion):string{
         [$accion, $objeto, $cantidad] = $this->obtenerParametros($accion);
-        if(!isset($cantidad)){
-            $cantidad = "1";
-        }
         if($accion == self::ACCION_GUARDAR){
             $this->guardar($objeto, $cantidad);
         }
@@ -26,7 +23,8 @@ class Mochila
 
     public function obtenerParametros(string $accion):array{
         $parametros = explode(" ", $accion);
-        return [$parametros[0],$parametros[1],$parametros[2]];
+        $cantidad = !isset($parametros[2]) ? "1" : $parametros[2];
+        return [$parametros[0],$parametros[1],$cantidad];
     }
 
     public function contenidoMochila():string{
