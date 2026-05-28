@@ -15,6 +15,9 @@ class Mochila
 
     public function ejecutar(string $accion):string{
         [$accion, $objeto, $cantidad] = $this->obtenerParametros($accion);
+        if((int)$cantidad < 0){
+            return "La cantidad debe ser un numero positivo";
+        }
         if($accion == self::ACCION_GUARDAR){
             $this->guardar($objeto, $cantidad);
         }
