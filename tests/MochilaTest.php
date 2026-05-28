@@ -167,4 +167,17 @@ class MochilaTest extends TestCase
         $this->assertEquals("guantes x3", $respuesta);
     }
 
+    /**
+     * @test
+     */
+    public function testUsarObjetoDeLaMochila():void
+    {
+        $mochila = new Mochila();
+
+        $mochila->ejecutar("guardar cantimplora 3");
+        $respuesta = $mochila->ejecutar("usar cantimplora");
+
+        $this->assertEquals("cantimplora x2", $respuesta);
+    }
+
 }
