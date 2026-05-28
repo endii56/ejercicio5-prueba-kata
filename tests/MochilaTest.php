@@ -193,4 +193,16 @@ class MochilaTest extends TestCase
         $this->assertEquals("", $respuesta);
     }
 
+    /**
+     * @test
+     */
+    public function testUsarUnObjetoNoExistente():void
+    {
+        $mochila = new Mochila();
+
+        $respueta = $mochila->ejecutar("usar cantimplora");
+
+        $this->assertEquals("El objeto seleccionado no existe", $respueta);
+    }
+
 }
