@@ -205,4 +205,17 @@ class MochilaTest extends TestCase
         $this->assertEquals("El objeto seleccionado no existe", $respueta);
     }
 
+    /**
+     * @test
+     */
+    public function testAccionUsarEnMayusculasSeDebeTratarIgualmente():void
+    {
+        $mochila = new Mochila();
+
+        $mochila->ejecutar("guardar cantimplora 3");
+        $respuesta = $mochila->ejecutar("UsAR cantimplora");
+
+        $this->assertEquals("cantimplora x2", $respuesta);
+    }
+
 }
