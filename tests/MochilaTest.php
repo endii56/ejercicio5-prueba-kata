@@ -13,7 +13,7 @@ class MochilaTest extends TestCase
     {
         $mochila = new Mochila();
 
-        $respuesta = $mochila->ejecutar();
+        $respuesta = $mochila->ejecutar("");
 
         $this->assertEquals("", $respuesta);
     }
