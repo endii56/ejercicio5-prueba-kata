@@ -29,4 +29,17 @@ class MochilaTest extends TestCase
 
         $this->assertEquals("1", $respuesta);
     }
+
+    /**
+     * @test
+     */
+    public function testGuardarMasDeUnObjetoMochila():void
+    {
+        $mochila = new Mochila();
+
+        $mochila->ejecutar("guardar cantimplora 1");
+        $respuesta = $mochila->ejecutar("guardar cuerda 2");
+
+        $this->assertEquals("1 2", $respuesta);
+    }
 }
