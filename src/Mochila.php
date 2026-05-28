@@ -18,6 +18,9 @@ class Mochila
 
     public function ejecutar(string $accion):string{
         [$accion, $objeto, $cantidad] = $this->obtenerParametros($accion);
+        if(!filter_var($cantidad, FILTER_VALIDATE_INT)){
+            return "La cantidad del objeto debe ser un numero entero";
+        }
         if($accion == self::ACCION_GUARDAR){
             return $this->guardar($objeto, $cantidad);
         }
