@@ -67,4 +67,16 @@ class MochilaTest extends TestCase
 
         $this->assertEquals("cantimplora x1", $respuesta);
     }
+
+    /**
+     * @test
+     */
+    public function testIngresarUnNumeroNegativo():void
+    {
+        $mochila = new Mochila();
+
+        $respuesta = $mochila->ejecutar("guardar cantimplora -3");
+
+        $this->assertEquals("La cantidad debe ser un numero positivo", $respuesta);
+    }
 }
