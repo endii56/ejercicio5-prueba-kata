@@ -29,7 +29,7 @@ class Mochila
     public function obtenerParametros(string $accion):array{
         $parametros = explode(" ", $accion);
         $cantidad = !isset($parametros[2]) ? "1" : $parametros[2];
-        return [$parametros[0],$parametros[1],$cantidad];
+        return [strtolower($parametros[0]),$parametros[1],$cantidad];
     }
 
     public function contenidoMochila():string{
