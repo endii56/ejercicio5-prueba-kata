@@ -12,10 +12,14 @@ class Mochila
         $this->mochila = [];
     }
 
-    public function ejecutar():string{
+    public function ejecutar(string $accion):string{
+        [$accion, $objeto, $cantidad] = explode(" ", $accion);
+        if($accion == "guardar"){
+            $this->mochila[$objeto] = $cantidad;
+        }
         if(empty($this->mochila)){
             return "";
         }
-        return "la mochila tiene objetos";
+        return implode(" ", $this->mochila);
     }
 }
