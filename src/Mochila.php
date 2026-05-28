@@ -23,6 +23,9 @@ class Mochila
         if($accion == self::ACCION_GUARDAR){
             return $this->guardar($objeto, $cantidad);
         }
+        if($accion === "usar"){
+            $this->mochila[$objeto] -= 1;
+        }
         return $this->contenidoMochila();
     }
 
