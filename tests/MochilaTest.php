@@ -27,7 +27,7 @@ class MochilaTest extends TestCase
 
         $respuesta = $mochila->ejecutar("guardar cantimplora 1");
 
-        $this->assertEquals("1", $respuesta);
+        $this->assertEquals("cantimplora x1", $respuesta);
     }
 
     /**
@@ -40,7 +40,7 @@ class MochilaTest extends TestCase
         $mochila->ejecutar("guardar cantimplora 1");
         $respuesta = $mochila->ejecutar("guardar cuerda 2");
 
-        $this->assertEquals("1 2", $respuesta);
+        $this->assertEquals("cantimplora x1, cuerda x2", $respuesta);
     }
 
     /**
