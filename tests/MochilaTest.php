@@ -180,4 +180,17 @@ class MochilaTest extends TestCase
         $this->assertEquals("cantimplora x2", $respuesta);
     }
 
+    /**
+     * @test
+     */
+    public function testCuandoUnObjetoLlegaA0SeDebeEliminarDeLaMochila():void
+    {
+        $mochila = new Mochila();
+
+        $mochila->ejecutar("guardar cantimplora 1");
+        $respuesta = $mochila->ejecutar("usar cantimplora");
+
+        $this->assertEquals("", $respuesta);
+    }
+
 }
