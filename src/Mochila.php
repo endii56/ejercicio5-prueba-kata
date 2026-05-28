@@ -41,10 +41,11 @@ class Mochila
     }
 
     public function guardar(string $objeto, string $cantidad):string{
-        if(!filter_var($cantidad, FILTER_VALIDATE_INT)){
+        $cantidadEntera = filter_var($cantidad, FILTER_VALIDATE_INT);
+        if($cantidadEntera === false){
             return self::MENSAJE_ERROR_NUMERO_NO_ENTERO;
         }
-        if((int)$cantidad <= 0){
+        if($cantidad <= 0){
             return self::MENSAJE_ERROR_NUMERO_GUARDAR;
         }
         $this->mochila[$objeto] = $cantidad;
