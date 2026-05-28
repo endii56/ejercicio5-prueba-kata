@@ -39,7 +39,7 @@ class Mochila
     }
 
     public function guardar(string $objeto, string $cantidad):string{
-        if((int)$cantidad < 0){
+        if((int)$cantidad <= 0){
             return self::MENSAJE_ERROR_NUMERO_GUARDAR;
         }
         $this->mochila[$objeto] = $cantidad;
