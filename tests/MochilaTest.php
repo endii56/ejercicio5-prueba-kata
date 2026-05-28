@@ -128,4 +128,16 @@ class MochilaTest extends TestCase
         $this->assertEquals("cantimplora x4", $respuesta);
     }
 
+    /**
+     * @test
+     */
+    public function testAlmacenarObjetosEnMinusculas():void
+    {
+        $mochila = new Mochila();
+
+        $respuesta = $mochila->ejecutar("guardar CantiMPloRA 6");
+
+        $this->assertEquals("cantimplora x6", $respuesta);
+    }
+
 }
