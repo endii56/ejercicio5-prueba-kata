@@ -17,4 +17,16 @@ class MochilaTest extends TestCase
 
         $this->assertEquals("", $respuesta);
     }
+
+    /**
+     * @test
+     */
+    public function testGuardarObjetoMochila():void
+    {
+        $mochila = new Mochila();
+
+        $respuesta = $mochila->ejecutar("guardar cantimplora 1");
+
+        $this->assertEquals("1", $respuesta);
+    }
 }
